@@ -1,5 +1,6 @@
 package org.kuspakov.springaop.controller;
 
+import org.kuspakov.springaop.dto.BookDto;
 import org.kuspakov.springaop.entity.Book;
 import org.kuspakov.springaop.service.BookService;
 import org.kuspakov.springaop.util.CustomResponse;
@@ -26,7 +27,10 @@ public class BookController {
     }
 
     @PostMapping("/books")
-    public CustomResponse<Book> addBook(@RequestBody Book book) {
-        return bookService.addBook(book);
+    public CustomResponse<Book> addBook(@RequestBody BookDto book) {
+        Book newBook = new Book();
+        newBook.setAuthor(book.getAuthor());
+        newBook.setTitle(book.getTitle());
+        return bookService.addBook(newBook);
     }
 }

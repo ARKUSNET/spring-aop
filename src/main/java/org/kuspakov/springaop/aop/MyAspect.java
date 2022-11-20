@@ -2,8 +2,10 @@ package org.kuspakov.springaop.aop;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.kuspakov.springaop.entity.Book;
 import org.kuspakov.springaop.util.CustomResponse;
@@ -76,5 +78,12 @@ public class MyAspect {
             log.info("Book get");
         }
         return result;
+    }
+
+    @AfterThrowing(pointcut = "Pointcuts.allAddMethods()", throwing = "e")
+    public void logAfterThrow(Throwable e) {
+        if (e instanceof NoSuchElementException) {
+            log.error(e.getMessage(), e);
+        }
     }
 }
