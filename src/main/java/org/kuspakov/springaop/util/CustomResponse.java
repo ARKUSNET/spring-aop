@@ -18,6 +18,4 @@ public class CustomResponse<T> {
     }
 
     private Collection<T> responseList;
-
-
 }

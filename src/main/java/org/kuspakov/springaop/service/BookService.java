@@ -1,6 +1,5 @@
 package org.kuspakov.springaop.service;
 
-import lombok.extern.slf4j.Slf4j;
 import org.kuspakov.springaop.entity.Book;
 import org.kuspakov.springaop.repository.BookRepository;
 import org.kuspakov.springaop.util.CustomResponse;
@@ -12,7 +11,6 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
-@Slf4j
 public class BookService {
 
     private final BookRepository bookRepository;
